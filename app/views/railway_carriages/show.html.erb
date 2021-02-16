@@ -1,24 +1,46 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Type of railway carriage:</strong>
-  <%= @railway_carriage.type_of_carriage %>
+<strong>Type:</strong>
+<p><strong><%= @railway_carriage.type_carriage %></strong></p>
+
+<strong>Number:</strong>
+<%= @railway_carriage.number %>
 </p>
 
-<p>
-  <strong>Amount of top seats: </strong>
-    <%= @railway_carriage.num_of_top_seats %>
-</p>
+<% if @railway_carriage.top_seats %>
+  <p>
+    <strong>Top Seats: </strong>
+    <%= @railway_carriage.top_seats %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Amount of bottom seats: </strong>
-  <%= @railway_carriage.num_of_bottom_seats %>
-</p>
+<% if @railway_carriage.bottom_seats %>
+  <p>
+    <strong>Bottom Seats: </strong>
+    <%= @railway_carriage.bottom_seats %>
+  </p>
+<% end %>
 
-<p>
-  <strong>This railway carriage is part of train: </strong>
-    <%= @railway_carriage.train.number %>
-</p>
+<% if @railway_carriage.side_top_seats %>
+  <p>
+    <strong>Side Top Seats: </strong>
+    <%= @railway_carriage.side_top_seats %>
+  </p>
+<% end %>
+
+<% if @railway_carriage.side_bottom_seats %>
+  <p>
+    <strong>Side Bottom Seats: </strong>
+    <%= @railway_carriage.side_bottom_seats %>
+  </p>
+<% end %>
+
+<% if @railway_carriage.seat_place %>
+  <p>
+    <strong>Seat place: </strong>
+    <%= @railway_carriage.seat_place %>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_railway_carriage_path(@railway_carriage) %> |
 <%= link_to 'Back', railway_carriages_path %>

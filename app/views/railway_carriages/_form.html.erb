@@ -1,3 +1,4 @@
+<%require 'pry' %>
 <%= form_for(@railway_carriage) do |form| %>
   <% if @railway_carriage.errors.any? %>
     <div id="error_explanation">
@@ -12,18 +13,34 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :type_of_carriage %>
-    <%= form.select :type_of_carriage,  [%w[Compartment Compartment], ['Reserved seat', 'Reserved seat']]%>
+    <% binding.pry %>
+    <%= form.label :type_carriage %>
+    <%= form.select :type_carriage, RailwayCarriage::TYPES, selected: @railway_carriage.type_carriage %>
   </div>
 
   <div class="field">
-    <%= form.label :num_of_top_seats %>
-    <%= form.text_field :num_of_top_seats %>
+    <%= form.label :top_seats %>
+    <%= form.text_field :top_seats %>
   </div>
 
   <div class="field">
-    <%= form.label :num_of_bottom_seats %>
-    <%= form.text_field :num_of_bottom_seats %>
+    <%= form.label :bottom_seats %>
+    <%= form.text_field :bottom_seats %>
+  </div>
+
+  <div class="field">
+    <%= form.label :side_top_seats %>
+    <%= form.text_field :side_top_seats %>
+  </div>
+
+  <div class="field">
+    <%= form.label :side_bottom_seats %>
+    <%= form.text_field :side_bottom_seats %>
+  </div>
+
+  <div class="field">
+    <%= form.label :seat_place %>
+    <%= form.text_field :seat_place %>
   </div>
 
   <div class="field">
@@ -32,6 +49,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit "#{ @railway_carriage.new_record? ? 'Create' : 'Edit' }"%>
+    <%= form.submit "#{ @railway_carriage.new_record? ? 'Create' : 'Edit' }" %>
   </div>
 <% end %>

@@ -1,8 +1,18 @@
 class RailwayCarriage < ApplicationRecord
-  validates :num_of_top_seats, presence: true
-  validates :num_of_bottom_seats, presence: true
-  validates :num_of_bottom_seats, numericality: { only_integer: true }
-  validates :num_of_top_seats, numericality: { only_integer: true }
+  TYPES = %w(CoupeCarriage EconomyCarriage SVCarriage SeatCarriage)
 
   belongs_to :train
+
+  validates :number, :type_carriage, :train, presence: true
+  validates :number, uniqueness: { scope: :train_id }
+
+  before_validation :add_number
+
+  def add_number
+    self.number ||= self.max_number + 1
+  end
+
+  def max_number
+    train.railway_carriages.pluck(:number).max || 0
+  end
 end
