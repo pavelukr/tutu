@@ -7,52 +7,42 @@
 
 <p>
   <% if @train.railway_carriages.present? %>
-    <%
-      num_comp = 0
-      num_comp_top = 0
-      num_comp_bot = 0
-      num_res = 0
-      num_res_top = 0
-      num_res_bot = 0
-    %>
-    <% @train.railway_carriages.each do |railway_carriage| %>
-      <% if railway_carriage.type_of_carriage == 'Compartment' %>
-        <% num_comp += 1 %>
-        <% num_comp_top += railway_carriage.num_of_top_seats %>
-        <% num_comp_bot += railway_carriage.num_of_bottom_seats %>
-      <% else %>
-        <% num_res += 1 %>
-        <% num_res_top += railway_carriage.num_of_top_seats %>
-        <% num_res_bot += railway_carriage.num_of_bottom_seats %>
-      <% end %>
+    <strong>This train has these carriages (sorted from </strong>
+    <% if @train.order_carriage %>
+      <strong> head)</strong>
+    <% else %>
+      <strong> tail)</strong>
     <% end %>
-    Number of carriages by type <strong>compartment</strong>: <%= num_comp %><br>
-    Number of <strong>top/bottom</strong> seats: <%= "#{num_comp_top} / #{num_comp_bot}" %><br>
-    <p></p>
-    Number of carriages by type <strong>reserved seat</strong>: <%= num_res %><br>
-    Number of <strong>top/bottom</strong> seats: <%= "#{num_res_top} / #{num_res_bot}" %><br>
-
+    <% @train.railway_carriages.each do |carriage| %>
+      <ul>
+        <li><%= link_to "#{carriage.number}", train_railway_carriage_path(carriage)%></li>
+      </ul>
+    <% end %>
   <% else %>
     <strong>This train doesn't have any carriages.</strong>
   <% end %>
-</p>
+  </p>
 
-<p>
-  <strong>On the station: </strong>
-  <% if @train.current_station.present? %>
-    <%= @train.current_station.title %>
+  <p>
+    <strong>On the station: </strong>
+    <% if @train.current_station.present? %>
+      <%= @train.current_station.title %>
+    <% else %>
+      Current station is not specified.
+    <% end %>
+  </p>
+
+  <strong>On the route: </strong>
+  <% if @train.route.present? %>
+    <%= @train.route.name %>
   <% else %>
-    Current station is not specified.
+    These train doesn't have a route.
   <% end %>
-</p>
+  </p>
 
-<strong>On the route: </strong>
-<% if @train.route.present? %>
-  <%= @train.route.name %>
-<% else %>
-  These train doesn't have a route.
-<% end %>
-</p>
+  <p>
+    <%= link_to "Add carriage", new_train_railway_carriage_path(@train) %>
+  </p>
 
-<%= link_to 'Edit', edit_train_path(@train) %> |
-<%= link_to 'Back', trains_path %>
+  <%= link_to 'Edit', edit_train_path(@train) %> |
+  <%= link_to 'Back', trains_path %>

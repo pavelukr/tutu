@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <strong>Type:</strong>
-<p><strong><%= @railway_carriage.type_carriage %></strong></p>
-
+<%= @railway_carriage.type %>
+<p>
 <strong>Number:</strong>
 <%= @railway_carriage.number %>
 </p>
@@ -42,5 +42,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Edit', edit_railway_carriage_path(@railway_carriage) %> |
-<%= link_to 'Back', railway_carriages_path %>
+<%= link_to 'Back', train_path(@railway_carriage.train) %>

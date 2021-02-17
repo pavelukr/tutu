@@ -1,53 +1,37 @@
 class RailwayCarriagesController < ApplicationController
-  before_action :set_railway_carriage, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @railway_carriages = RailwayCarriage.all
-  end
+  before_action :find_train, only: [:create, :new]
 
   def show
   end
 
   def new
-    @railway_carriage = RailwayCarriage.new
+    @railway_carriage = @train.railway_carriages.build
   end
 
   def create
-    @railway_carriage = RailwayCarriage.new(railway_carriage_params)
-
-    if @railway_carriage.save
-      redirect_to @railway_carriage
+    @carriage = @train.railway_carriages.build(railway_carriage_params)
+    if @carriage.save
+      redirect_to @train, note: 'Carriage successfully created!'
     else
-      render :new
-    end
-  end
-
-  def edit
-  end
-
-  def update
-    if @railway_carriage.update(railway_carriage_params)
-      redirect_to @railway_carriage
-    else
-      render :edit
+      redirect_to train_path(@train)
     end
   end
 
   def destroy
     @railway_carriage.destroy
     respond_to do |format|
-      format.html { redirect_to railway_carriages_url, notice: "Railway carriage was successfully destroyed." }
+      format.html { redirect_to train_railway_carriages_url, notice: "Railway carriage was successfully destroyed." }
     end
   end
 
   private
 
-  def set_railway_carriage
-    @railway_carriage = RailwayCarriage.find(params[:id])
+  def find_train
+    @train = Train.find(params[:train_id])
   end
 
   def railway_carriage_params
     params.require(:railway_carriage).permit(:type, :top_seats, :bottom_seats,
-                                             :side_top_seats, :side_bottom_seats, :seat_place, :train_id)
+                                             :side_top_seats, :side_bottom_seats, :seat_place)
   end
 end

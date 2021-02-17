@@ -1,5 +1,5 @@
-<%require 'pry' %>
-<%= form_for(@railway_carriage) do |form| %>
+<%= form_for [@train, @railway_carriage.becomes(RailwayCarriage)] do |form| %>
+
   <% if @railway_carriage.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@railway_carriage.errors.count, "error") %> prohibited this carriage from being saved:</h2>
@@ -13,9 +13,8 @@
   <% end %>
 
   <div class="field">
-    <% binding.pry %>
-    <%= form.label :type_carriage %>
-    <%= form.select :type_carriage, RailwayCarriage::TYPES, selected: @railway_carriage.type_carriage %>
+    <%= form.label :type %>
+    <%= form.select :type, RailwayCarriage::TYPES, selected: @railway_carriage.type%>
   </div>
 
   <div class="field">
@@ -43,12 +42,8 @@
     <%= form.text_field :seat_place %>
   </div>
 
-  <div class="field">
-    <%= form.label :train_ids, "Select train to add carriage" %>
-    <%= form.collection_select :train_id, Train.all, :id, :number, {} %>
-  </div>
 
   <div class="actions">
-    <%= form.submit "#{ @railway_carriage.new_record? ? 'Create' : 'Edit' }" %>
+    <%= form.submit  'Create' %>
   </div>
 <% end %>

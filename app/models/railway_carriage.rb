@@ -3,10 +3,10 @@ class RailwayCarriage < ApplicationRecord
 
   belongs_to :train
 
-  validates :number, :type_carriage, :train, presence: true
+  validates :number, :type, :train, presence: true
   validates :number, uniqueness: { scope: :train_id }
 
-  before_validation :add_number
+before_validation :add_number
 
   def add_number
     self.number ||= self.max_number + 1
