@@ -1,5 +1,6 @@
 class RailwayCarriagesController < ApplicationController
-  before_action :find_train, only: [:create, :new]
+  before_action :find_train, only: [:create, :new, :show]
+  before_action :find_carriage, only: [:show]
 
   def show
   end
@@ -9,11 +10,11 @@ class RailwayCarriagesController < ApplicationController
   end
 
   def create
-    @carriage = @train.railway_carriages.build(railway_carriage_params)
-    if @carriage.save
+    @railway_carriage = @train.railway_carriages.build(railway_carriage_params)
+    if @railway_carriage.save
       redirect_to @train, note: 'Carriage successfully created!'
     else
-      redirect_to train_path(@train)
+      redirect_to new_train_railway_carriage_path(@train)
     end
   end
 
@@ -28,6 +29,10 @@ class RailwayCarriagesController < ApplicationController
 
   def find_train
     @train = Train.find(params[:train_id])
+  end
+
+  def find_carriage
+    @railway_carriage = RailwayCarriage.find(params[:id])
   end
 
   def railway_carriage_params

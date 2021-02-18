@@ -1,3 +1,3 @@
-class SVCarriage < RailwayCarriage
+class SvCarriage < RailwayCarriage
   validates :bottom_seats, presence: true
 end

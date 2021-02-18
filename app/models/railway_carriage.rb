@@ -1,5 +1,5 @@
 class RailwayCarriage < ApplicationRecord
-  TYPES = %w(CoupeCarriage EconomyCarriage SVCarriage SeatCarriage)
+  TYPES = %w(CoupeCarriage EconomyCarriage SvCarriage SeatCarriage)
 
   belongs_to :train
 

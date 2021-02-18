@@ -10,7 +10,7 @@ class Train < ApplicationRecord
   validates :order_carriage, inclusion: { in: [true, false] }
 
   def order_carriage
-    false
+    true
   end
 
   def number_of_seats(type_of_carriage, type_of_seat)

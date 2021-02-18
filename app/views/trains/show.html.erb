@@ -13,9 +13,9 @@
     <% else %>
       <strong> tail)</strong>
     <% end %>
-    <% @train.railway_carriages.each do |carriage| %>
+    <% @train.railway_carriages.each do |railway_carriage| %>
       <ul>
-        <li><%= link_to "#{carriage.number}", train_railway_carriage_path(carriage)%></li>
+        <li><%= link_to "#{railway_carriage.number}", train_railway_carriage_path(@train, railway_carriage) %></li>
       </ul>
     <% end %>
   <% else %>
