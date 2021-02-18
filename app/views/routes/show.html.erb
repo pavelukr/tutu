@@ -24,12 +24,41 @@
   <% if @route.railway_stations.empty? %>
     There are no stations on this route
 <% else %>
-  <ul>
-    <%Route.ordered_railway_stations %>
-    <% @route.railway_stations.each do |railway_station| %>
-      <li><%= railway_station.title %></li>
-    <% end %>
-  </ul>
+    <table>
+      <thead>
+      <tr>
+        <td width="100px">Title</td>
+        <td>Position</td>
+      </tr>
+      </thead>
+      <tbody>
+      <% @route.railway_stations.ordered.each do |station| %>
+        <tr>
+          <td><%= station.title %></td>
+          <td>
+            <%= form_tag update_position_railway_station_path(station), method: :patch do %>
+              <%= number_field_tag :position, station.position_in(@route) %>
+              <%= hidden_field_tag :route_id, @route.id %>
+              <%= submit_tag "Change" %>
+            <% end %>
+          </td>
+          <td>
+              <%= station.arrival_time_at(@route) %>
+              <%= station.departure_time_at(@route) %>
+              <%= hidden_field_tag :route_id, @route.id %>
+          </td>
+          <td>
+            <%= form_tag update_time_railway_station_path(station), method: :patch do %>
+              <%= time_field_tag :arrival_time, station.arrival_time_at(@route) %>
+              <%= time_field_tag :departure_time, station.departure_time_at(@route) %>
+              <%= hidden_field_tag :route_id, @route.id %>
+              <%= submit_tag "Change" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
 <% end %>
 </p>
 

@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  resources :railway_stations, :routes
-  resources :trains do
-    resources :railway_carriages, only: [:index, :new, :create, :show, :destroy]
+  resources :railway_stations do
+    patch :update_position, on: :member
+    patch :update_time, on: :member
   end
+  resources :routes
+  resources :trains do
+    resources :railway_carriages, shallow: true
+  end
+  resource :search, only: [:new, :show, :edit]
   get 'main/menu'
   root 'main#menu'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

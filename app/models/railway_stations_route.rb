@@ -3,6 +3,5 @@ class RailwayStationsRoute < ApplicationRecord
   belongs_to :route
 
   validates :railway_station_id, uniqueness: { scope: :route_id }
-
-  self.primary_key = "position"
+  validates :position, uniqueness: { scope: :route_id, allow_nil: true }
 end

@@ -1,5 +1,5 @@
 class RailwayCarriagesController < ApplicationController
-  before_action :find_train, only: [:create, :new, :show]
+  before_action :find_train, only: [:create, :new]
   before_action :find_carriage, only: [:show]
 
   def show

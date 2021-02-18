@@ -9,7 +9,6 @@ class Route < ApplicationRecord
 
   has_many :railway_stations_routes
   has_many :railway_stations, through: :railway_stations_routes
-  scope :ordered_railway_stations, -> { joins(:railway_stations_routes).order('railway_stations_routes.position') }
 
   private
 
