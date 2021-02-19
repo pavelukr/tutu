@@ -1,0 +1,28 @@
+<table>
+  <tbody>
+  <% @route.each do |route| %>
+    <tr>
+      <td>Departure time:</td>
+      <td>Departure station:</td>
+      <td>Arrival time:</td>
+      <td>Arrival station:</td>
+    </tr>
+    <tr>
+      <td><%= route.railway_stations.find(@begin_station.id).departure_time_at(route) %></td>
+      <td><%= @begin_station.title %></td>
+      <td><%= route.railway_stations.find(@end_station.id).arrival_time_at(route) %></td>
+      <td><%= @end_station.title %></td>
+    </tr>
+    <tr>
+      <td>These trains are available on this route:</td>
+      <% route.trains.each do |train| %>
+    </tr>
+    <tr>
+      <td>Train by number: <%= train.number %></td>
+      <td><%= link_to "Buy ticket on this train", new_ticket_url %></td>
+      <%= link_to('Index Page with parameters',{:action => '', :Page => 2, :id => 1}) %><br />
+    </tr>
+      <% end %>
+  <% end %>
+  </tbody>
+</table>

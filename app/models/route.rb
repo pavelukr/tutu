@@ -10,6 +10,13 @@ class Route < ApplicationRecord
   has_many :railway_stations_routes
   has_many :railway_stations, through: :railway_stations_routes
 
+  scope :with_station, -> (station) { Route.joins(:railway_stations).where('railway_stations.id = ?', station.id) }
+
+  def self.find_routes(begin_station, last_station)
+    Route.with_station(begin_station) &
+      Route.with_station(last_station)
+  end
+
   private
 
   def set_name
