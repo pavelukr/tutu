@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<strong>Ticket information: </strong>
+<title>Ticket information: </title>
 
 <p>
   <strong>First name:</strong>
@@ -7,13 +7,13 @@
 </p>
 
 <p>
-  <strong>Last name:</strong>
-  <%= @ticket.last_name %>
+  <strong>Middle name:</strong>
+  <%= @ticket.middle_name %>
 </p>
 
 <p>
-  <strong>Middle name:</strong>
-  <%= @ticket.middle_name %>
+  <strong>Last name:</strong>
+  <%= @ticket.last_name %>
 </p>
 
 <p>
@@ -28,12 +28,12 @@
 
 <p>
   <strong>Begin station: </strong>
-  <%= @ticket.begin_station %>
+  <%= @ticket.begin_station.title %>
 </p>
 
 <p>
   <strong>End station: </strong>
-  <%= @ticket.end_station %>
+  <%= @ticket.end_station.title %>
 </p>
 
 <%= link_to 'Back', search_path %>

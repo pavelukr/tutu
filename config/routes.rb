@@ -3,10 +3,9 @@ Rails.application.routes.draw do
     patch :update_position, on: :member
     patch :update_time, on: :member
   end
-  resources :tickets
   resources :routes
   resources :trains do
-    resources :railway_carriages, shallow: true
+    resources :railway_carriages, :tickets, shallow: true
   end
   resource :search, only: [:show, :new, :edit] do
     post '/', to: 'searches#search'

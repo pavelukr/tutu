@@ -19,8 +19,8 @@
     </tr>
     <tr>
       <td>Train by number: <%= train.number %></td>
-      <td><%= link_to "Buy ticket on this train", new_ticket_url %></td>
-      <%= link_to('Index Page with parameters',{:action => '', :Page => 2, :id => 1}) %><br />
+      <td><%= link_to "Buy ticket to this train", new_train_ticket_path(train, begin_station: @begin_station,
+                                                                        end_station: @end_station) %></td>
     </tr>
       <% end %>
   <% end %>
