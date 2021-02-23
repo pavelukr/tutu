@@ -1,4 +1,4 @@
-<%= form_for [@train, @railway_carriage.becomes(RailwayCarriage)] do |form| %>
+<%= form_for [:admin, @train, @railway_carriage.becomes(RailwayCarriage)] do |form| %>
 
   <% if @railway_carriage.errors.any? %>
     <div id="error_explanation">

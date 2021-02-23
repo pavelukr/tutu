@@ -12,16 +12,16 @@ class Admin::RailwayCarriagesController < Admin::BaseController
   def create
     @railway_carriage = @train.railway_carriages.build(railway_carriage_params)
     if @railway_carriage.save
-      redirect_to @train, note: 'Carriage successfully created!'
+      redirect_to [:admin, @train], note: 'Carriage successfully created!'
     else
-      redirect_to new_train_railway_carriage_path(@train)
+      redirect_to new_admin_train_railway_carriage_path(@train)
     end
   end
 
   def destroy
     @railway_carriage.destroy
     respond_to do |format|
-      format.html { redirect_to train_railway_carriages_url, notice: "Railway carriage was successfully destroyed." }
+      format.html { redirect_to admin_train_railway_carriages_url, notice: "Railway carriage was successfully destroyed." }
     end
   end
 

@@ -1,7 +1,17 @@
-class Admin::TicketsController < Admin::BaseController
+class Admin::TicketsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :check_admin, only: :edit
   before_action :find_train, only: [:create, :new]
   before_action :find_begin, :find_end, only: [:new]
-  before_action :find_ticket, only: [ :show ]
+  before_action :find_ticket, only: [:show, :edit, :destroy, :update]
+
+  def index
+    if current_user.admin
+      @tickets = Ticket.all
+    else
+      @tickets = current_user.tickets
+    end
+  end
 
   def show
   end
@@ -14,11 +24,29 @@ class Admin::TicketsController < Admin::BaseController
     @ticket = @train.tickets.build(ticket_params)
     @ticket.begin_station = find_begin
     @ticket.end_station = find_end
-    @ticket.user = User.first
+    @ticket.user = current_user
     if @ticket.save
-      redirect_to @ticket, note: 'Carriage successfully created!'
+      redirect_to [:admin, @ticket], note: 'Ticket successfully bought!'
     else
-      redirect_to new_train_ticket_path(@train)
+      redirect_to new_admin_train_ticket_path(@train)
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @ticket.save
+      redirect_to [:admin, @ticket], note: 'Ticket successfully updated!'
+    else
+      redirect_to edit_admin_ticket_path(@train)
+    end
+  end
+
+  def destroy
+    @ticket.destroy
+    respond_to do |format|
+      format.html { redirect_to admin_train_tickets_url(Train.all), notice: "Ticket was successfully destroyed." }
     end
   end
 
@@ -43,5 +71,9 @@ class Admin::TicketsController < Admin::BaseController
   def ticket_params
     params.require(:ticket).permit(:first_name, :last_name, :middle_name,
                                    :passport)
+  end
+
+  def check_admin
+    redirect_to admin_train_tickets_path(Train.all), alert: "You don't have permission for editing tickets" unless current_user.admin?
   end
 end

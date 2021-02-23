@@ -19,7 +19,7 @@
     </tr>
     <tr>
       <td>Train by number: <%= train.number %></td>
-      <td><%= link_to "Buy ticket to this train", new_train_ticket_path(train, begin_station: @begin_station,
+      <td><%= link_to "Buy ticket to this train", new_admin_train_ticket_path(train, begin_station: @begin_station,
                                                                         end_station: @end_station) %></td>
     </tr>
       <% end %>

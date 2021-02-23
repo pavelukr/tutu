@@ -16,7 +16,7 @@ class Admin::RoutesController < Admin::BaseController
     @route = Route.new(route_params)
 
     if @route.save
-      redirect_to @route
+      redirect_to [:admin, @route]
     else
       render :new
     end
@@ -27,7 +27,7 @@ class Admin::RoutesController < Admin::BaseController
 
   def update
     if @route.update(route_params)
-      redirect_to @route
+      redirect_to [:admin, @route]
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class Admin::RoutesController < Admin::BaseController
   def destroy
     @route.destroy
     respond_to do |format|
-      format.html { redirect_to routes_url, notice: "Route was successfully destroyed." }
+      format.html { redirect_to admin_routes_url, notice: "Route was successfully destroyed." }
     end
   end
 

@@ -12,4 +12,7 @@
   </tbody>
 </table>
 <%= button_to "Search", action: "search" %>
+  <p></p>
+
+  <%= link_to 'List of tickets', admin_train_tickets_path(Train.all) %>
 <% end %>

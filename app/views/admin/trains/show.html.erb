@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Number:</strong>
   <%= @train.number %>
@@ -15,7 +13,7 @@
     <% end %>
     <% @train.railway_carriages.each do |railway_carriage| %>
       <ul>
-        <li><%= link_to "Carriage №#{railway_carriage.number}", railway_carriage_path(railway_carriage) %></li>
+        <li><%= link_to "Carriage №#{railway_carriage.number}", admin_railway_carriage_path(railway_carriage) %></li>
       </ul>
     <% end %>
   <% else %>
@@ -41,8 +39,8 @@
   </p>
 
   <p>
-    <%= link_to "Add carriage", new_train_railway_carriage_path(@train) %>
+    <%= link_to "Add carriage", new_admin_train_railway_carriage_path(@train) %>
   </p>
 
-  <%= link_to 'Edit', edit_train_path(@train) %> |
-  <%= link_to 'Back', trains_path %>
+  <%= link_to 'Edit', edit_admin_train_path(@train) %> |
+  <%= link_to 'Back', admin_trains_path %>

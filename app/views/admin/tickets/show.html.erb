@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <title>Ticket information: </title>
 
 <p>
@@ -36,4 +35,6 @@
   <%= @ticket.end_station.title %>
 </p>
 
-<%= link_to 'Back', search_path %>
+<%= link_to 'List of tickets', admin_train_tickets_path(Train.all) %>
+<p></p>
+<%= link_to 'Back to search', search_path %>
