@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_23_153025) do
+ActiveRecord::Schema.define(version: 2021_02_24_161816) do
 
   create_table "railway_carriages", force: :cascade do |t|
     t.integer "number"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2021_02_23_153025) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "train_id"
+    t.index ["id", "type"], name: "index_railway_carriages_on_id_and_type"
+    t.index ["number"], name: "index_railway_carriages_on_number"
     t.index ["train_id"], name: "index_railway_carriages_on_train_id"
   end
 
@@ -30,6 +32,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_153025) do
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["title"], name: "index_railway_stations_on_title"
   end
 
   create_table "railway_stations_routes", force: :cascade do |t|
@@ -38,6 +41,8 @@ ActiveRecord::Schema.define(version: 2021_02_23_153025) do
     t.integer "position"
     t.time "arrival_time"
     t.time "departure_time"
+    t.index ["position"], name: "index_railway_stations_routes_on_position"
+    t.index ["railway_station_id", "position"], name: "index_railway_stations_routes_on_railway_station_id_and_position"
     t.index ["railway_station_id"], name: "index_railway_stations_routes_on_railway_station_id"
     t.index ["route_id"], name: "index_railway_stations_routes_on_route_id"
   end
@@ -46,6 +51,7 @@ ActiveRecord::Schema.define(version: 2021_02_23_153025) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_routes_on_name"
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -59,6 +65,12 @@ ActiveRecord::Schema.define(version: 2021_02_23_153025) do
     t.text "last_name"
     t.text "middle_name"
     t.text "passport"
+    t.index ["begin_station_id", "end_station_id"], name: "index_tickets_on_begin_station_id_and_end_station_id"
+    t.index ["begin_station_id"], name: "index_tickets_on_begin_station_id"
+    t.index ["end_station_id"], name: "index_tickets_on_end_station_id"
+    t.index ["first_name"], name: "index_tickets_on_first_name"
+    t.index ["last_name"], name: "index_tickets_on_last_name"
+    t.index ["passport"], name: "index_tickets_on_passport"
     t.index ["train_id"], name: "index_tickets_on_train_id"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
@@ -69,6 +81,8 @@ ActiveRecord::Schema.define(version: 2021_02_23_153025) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "current_station_id"
     t.integer "route_id"
+    t.index ["current_station_id"], name: "index_trains_on_current_station_id"
+    t.index ["number"], name: "index_trains_on_number"
     t.index ["route_id"], name: "index_trains_on_route_id"
   end
 
@@ -88,6 +102,8 @@ ActiveRecord::Schema.define(version: 2021_02_23_153025) do
     t.string "first_name"
     t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["first_name"], name: "index_users_on_first_name"
+    t.index ["last_name"], name: "index_users_on_last_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
