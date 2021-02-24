@@ -1,0 +1,38 @@
+<title>Ticket information: </title>
+
+<p>
+  <strong>First name:</strong>
+  <%= @ticket.first_name %>
+</p>
+
+<p>
+  <strong>Middle name:</strong>
+  <%= @ticket.middle_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @ticket.last_name %>
+</p>
+
+<p>
+  <strong>Passport: </strong>
+  <%= @ticket.passport %>
+</p>
+
+<p>
+  <strong>Train number: </strong>
+  <%= @ticket.train.number %>
+</p>
+
+<p>
+  <strong>Begin station: </strong>
+  <%= @ticket.begin_station.title %>
+</p>
+
+<p>
+  <strong>End station: </strong>
+  <%= @ticket.end_station.title %>
+</p>
+
+<%= link_to 'List of tickets', admin_train_tickets_path(Train.all) %>

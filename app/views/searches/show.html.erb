@@ -1,0 +1,19 @@
+<div class="row">
+  <%= form_tag search_path, class: 'search_form' do %>
+    <div class="col-md-4">
+      <%= select_tag(:begin_station, options_from_collection_for_select(RailwayStation.all, 'id', 'title'),
+                     class: 'form-control', prompt: "Select starting station") %>
+    </div>
+    <div class="col-md-4">
+      <%= select_tag(:end_station, options_from_collection_for_select(RailwayStation.all, 'id', 'title'),
+                     class: 'form-control', prompt: "Select terminal station") %>
+    </div>
+    <div class="col-md-4">
+      <%= button_to "Search", action: "search" %>
+    </div>
+  <% end %>
+</div>
+<p></p>
+<div class="row">
+  <div class="col-md-3"><%= link_to 'List of tickets', admin_train_tickets_path(Train.all) %></div>
+</div>

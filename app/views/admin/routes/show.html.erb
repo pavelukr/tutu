@@ -1,0 +1,64 @@
+<p>
+  <strong>Name:</strong>
+  <%= @route.name %>
+</p>
+
+<p>
+
+  <% if @route.trains.present? %>
+    <strong>On route you have these trains: </strong>
+    <ul>
+    <% @route.trains.each do |train| %>
+        <li><%= train.number %></li>
+    <% end %>
+    </ul>
+  <% else %>
+    <strong>There are no trains on this route</strong>
+  <% end %>
+</p>
+
+<p>
+  <strong>This route consists of these stations: </strong>
+  <% if @route.railway_stations.empty? %>
+    There are no stations on this route
+<% else %>
+    <table>
+      <thead>
+      <tr>
+        <td width="100px">Title</td>
+        <td>Position</td>
+      </tr>
+      </thead>
+      <tbody>
+      <% @route.railway_stations.ordered.each do |station| %>
+        <tr>
+          <td><%= station.title %></td>
+          <td>
+            <%= form_tag update_position_admin_railway_station_path(station), method: :patch do %>
+              <%= number_field_tag :position, station.position_in(@route) %>
+              <%= hidden_field_tag :route_id, @route.id %>
+              <%= submit_tag "Change" %>
+            <% end %>
+          </td>
+          <td>
+              <%= station.arrival_time_at(@route) %>
+              <%= station.departure_time_at(@route) %>
+              <%= hidden_field_tag :route_id, @route.id %>
+          </td>
+          <td>
+            <%= form_tag update_time_admin_railway_station_path(station), method: :patch do %>
+              <%= time_field_tag :arrival_time, station.arrival_time_at(@route) %>
+              <%= time_field_tag :departure_time, station.departure_time_at(@route) %>
+              <%= hidden_field_tag :route_id, @route.id %>
+              <%= submit_tag "Change" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+<% end %>
+</p>
+
+<%= link_to 'Edit', edit_admin_route_path(@route) %> |
+<%= link_to 'Back', admin_routes_path %>

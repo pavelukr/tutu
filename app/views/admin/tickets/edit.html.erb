@@ -1,0 +1,50 @@
+<div class="field">
+  Begin station: <%= @ticket.begin_station.title %>
+
+</div>
+
+<div class="field">
+  End station: <%= @ticket.end_station.title %>
+</div>
+
+<div class="field">
+  Train number: <%= @ticket.train.number %>
+</div>
+
+<%= form_for [:admin, @ticket] do |form| %>
+  <% if @ticket.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@ticket.errors.count, "error") %> prohibited this ticket from being saved:</h2>
+
+      <ul>
+        <% @ticket.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :middle_name %>
+    <%= form.text_field :middle_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :passport %>
+    <%= form.text_field :passport %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Edit' %>
+  </div>
+<% end %>
