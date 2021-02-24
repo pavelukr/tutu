@@ -1,0 +1,49 @@
+<strong>Type:</strong>
+<%= @railway_carriage.type %>
+
+<p>
+<strong>Number:</strong>
+<%= @railway_carriage.number %>
+</p>
+
+<p>
+  <strong>Train number:</strong>
+  <%= @railway_carriage.train.number %>
+</p>
+
+<% if @railway_carriage.top_seats %>
+  <p>
+    <strong>Top Seats: </strong>
+    <%= @railway_carriage.top_seats %>
+  </p>
+<% end %>
+
+<% if @railway_carriage.bottom_seats %>
+  <p>
+    <strong>Bottom Seats: </strong>
+    <%= @railway_carriage.bottom_seats %>
+  </p>
+<% end %>
+
+<% if @railway_carriage.side_top_seats %>
+  <p>
+    <strong>Side Top Seats: </strong>
+    <%= @railway_carriage.side_top_seats %>
+  </p>
+<% end %>
+
+<% if @railway_carriage.side_bottom_seats %>
+  <p>
+    <strong>Side Bottom Seats: </strong>
+    <%= @railway_carriage.side_bottom_seats %>
+  </p>
+<% end %>
+
+<% if @railway_carriage.seat_place %>
+  <p>
+    <strong>Seat place: </strong>
+    <%= @railway_carriage.seat_place %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', admin_train_path(@railway_carriage.train) %>

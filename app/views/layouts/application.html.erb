@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% if user_signed_in? %>
+    <% if current_user.admin %>
+      <title>Tutu - Admin</title>
+    <% else %>
+      <title>Tutu</title>
+    <% end %>
+  <% else %>
+    <title>Tutu</title>
+  <% end %>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+<p id="notice" class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<% if user_signed_in? %>
+  <p>Account: <%= current_user.email %></p>
+  <%= link_to "Exit", destroy_user_session_path, method: :delete %>
+<% else %>
+  <%= link_to "Enter", new_user_session_path %>
+<% end %>
+<%= yield %>
+</body>
+
+<footer position="absolute" bottom="0" width="100%" height="2.5rem">
+  (с) 2020 Павел Тишков. Учебный проект в <a href="https://gotoinc.co/">Gotoinc.</a>
+</footer>
+</html>

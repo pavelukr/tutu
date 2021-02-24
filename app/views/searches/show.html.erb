@@ -1,0 +1,18 @@
+<%= form_tag search_path, class: 'form-inline' do %>
+<table>
+  <tbody>
+  <tr>
+    <td><%= select_tag(:begin_station, options_from_collection_for_select(RailwayStation.all, 'id', 'title'),
+                       prompt: "Select starting station") %>
+    </td>
+    <td><%= select_tag(:end_station, options_from_collection_for_select(RailwayStation.all, 'id', 'title'),
+                       prompt: "Select terminal station") %>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<%= button_to "Search", action: "search" %>
+  <p></p>
+
+  <%= link_to 'List of tickets', admin_train_tickets_path(Train.all) %>
+<% end %>

@@ -1,0 +1,25 @@
+<h1>List of Tickets</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @tickets.each do |ticket| %>
+    <% if ticket.begin_station != nil && ticket.end_station != nil %>
+      <tr>
+        <td><%= "Ticket to route #{ticket.begin_station.title} - #{ticket.end_station.title} " %></td>
+        <td><%= link_to 'Show', [:admin, ticket] %></td>
+        <td><%= link_to 'Edit', edit_admin_ticket_path(ticket) %></td>
+        <td><%= link_to 'Delete', [:admin, ticket], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Buy ticket', search_path %>
