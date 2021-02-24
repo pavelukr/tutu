@@ -1,0 +1,73 @@
+ru:
+  activerecord:
+    models:
+      railway_station: "Станция"
+      train: "Поезд"
+      railway_carriage: "Вагон"
+      route: "Маршрут"
+      ticket: "Билет"
+      user: "Пользователь"
+    attributes:
+      railway_station:
+        title: 'Название'
+      train:
+        number: 'Номер'
+        current_station: "Текущая станция"
+      railway_carriage:
+        number: "Номер"
+        top_seats: "Верхние места"
+        bottom_seats: "Нижние места"
+        side_top_seats: "Верхние боковые места"
+        side_bottom_seats: "Верхние нижние места"
+        seat_place: "Сидячие места"
+      ticket:
+        first_name: "Имя"
+        last_name: "Фамилия"
+        middle_name: "Отчество"
+        passport: "Пасспорт"
+        begin_station: "Начальная станция"
+        end_station: "Конечная станция"
+      route:
+        name: "Маршрут"
+      user:
+        first_name: "Имя"
+        last_name: "Фамилия"
+        password: "Пароль"
+    errors:
+      messages:
+        blank: "не может быть пустым"
+      models:
+        railway_station:
+          attributes:
+            title:
+              blank: "должно быть указано"
+        train:
+          attributes:
+            number:
+              blank: "должен быть указан"
+          current_station:
+            blank: "должна быть указана"
+        railway_carriage:
+          attributes:
+            number:
+              blank: "должен быть указан"
+            top_seats:
+              blank: "должны быть указаны"
+            bottom_seats:
+              blank: "должны быть указаны"
+            side_top_seats:
+              blank: "должны быть указаны"
+            side_bottom_seats:
+              blank: "должны быть указаны"
+            seat_place:
+              blank: "должны быть указаны"
+        ticket:
+          attributes:
+            first_name:
+              blank: "должно быть указано"
+            last_name:
+              blank: "должно быть указано"
+            middle_name:
+              blank: "должно быть указано"
+            passport:
+              blank: "должен быть указан"
