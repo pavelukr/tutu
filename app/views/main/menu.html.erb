@@ -1,15 +1,15 @@
 <h1>Here you have:</h1>
 
-<%= link_to 'List of Railway stations', admin_railway_stations_path %>
+<%= link_to 'List of Railway stations', admin_railway_stations_url %>
 
 <p></p>
 
-<%= link_to 'List of trains', admin_trains_path %>
+<%= link_to 'List of trains', admin_trains_url %>
 
 <p></p>
 
-<%= link_to 'List of routes', admin_routes_path %>
+<%= link_to 'List of routes', admin_routes_url %>
 
 <p></p>
 
-<%= link_to 'List of tickets', admin_train_tickets_path(Train.all) %>
+<%= link_to 'List of tickets', admin_train_tickets_url(Train.all) %>
