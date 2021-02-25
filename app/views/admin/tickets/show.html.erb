@@ -34,5 +34,11 @@
   <strong>End station: </strong>
   <%= @ticket.end_station.title %>
 </p>
+<% if current_user.admin %>
+  <p>
+    <strong>Email of user, who bought ticket: </strong>
+    <%= @ticket.user.email %>
+  </p>
+<% end %>
 
 <%= link_to 'List of tickets', admin_train_tickets_path(Train.all) %>
