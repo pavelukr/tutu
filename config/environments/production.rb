@@ -33,9 +33,9 @@ Rails.application.configure do
     :address   => "smtp.sendgrid.net",
     :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
     :enable_starttls_auto => true, # detects and uses STARTTLS
-    :user_name => ENV["apikey"],
-    :password  => ENV["TUTU_SENDGRID"], # SMTP password is any valid API key, when user_name is "apikey".
-    :authentication => 'tishkov.pavlo@gmail.com',
+    :user_name => ENV["SENDGRID_USERNAME"],
+    :password  => ENV["SENDGRID_PASSWORD"], # SMTP password is any valid API key, when user_name is "apikey".
+    :authentication => 'plain',
     :domain => 'serene-spire-83709.herokuapp.com', # your domain to identify your server when connecting
   }
 
