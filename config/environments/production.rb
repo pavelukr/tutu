@@ -27,6 +27,8 @@ Rails.application.configure do
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   config.action_mailer.default_url_options = { host: "serene-spire-83709.herokuapp.com"}
+  config.action_mailer.delivery_method = :sendgrid_actionmailer
+=begin
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address   => "smtp.sendgrid.net",
@@ -37,6 +39,7 @@ Rails.application.configure do
     :authentication => 'plain',
     :domain => 'herokuapp.com', # your domain to identify your server when connecting
   }
+=end
 
 
   # Compress CSS using a preprocessor.
