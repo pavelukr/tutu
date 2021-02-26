@@ -31,11 +31,10 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     :address   => "smtp.sendgrid.net",
     :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
-    :enable_starttls_auto => true, # detects and uses STARTTLS
     :user_name => 'apikey',
     :password  => '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', # SMTP password is any valid API key, when user_name is "apikey".
     :authentication => 'login',
-    :domain => 'serene-spire-83709.herokuapp.com', # your domain to identify your server when connecting
+    :domain => 'herokuapp.com', # your domain to identify your server when connecting
   }
 
 
