@@ -26,6 +26,11 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
+  config.action_mailer.default_url_options = { host: "serene-spire-83709.herokuapp.com"}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.sendmail_settings = { api_token: ENV['TUTU_SENDGRID'] }
+
+
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
 
@@ -65,10 +70,6 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "tutu_production"
 
   config.action_mailer.perform_caching = false
-
-  config.action_mailer.default_url_options = { host: "serene-spire-83709.herokuapp.com"}
-  config.action_mailer.delivery_method = :sendgrid
-  config.action_mailer.sendmail_settings = { api_token: ENV['TUTU_SENDGRID'] }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
