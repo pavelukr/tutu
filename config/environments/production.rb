@@ -26,9 +26,8 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
-  config.action_mailer.default_url_options = { host: "serene-spire-83709.herokuapp.com"}
+  #config.action_mailer.default_url_options = { host: "serene-spire-83709.herokuapp.com"}
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.sendmail_settings = { api_token: ENV['TUTU_SENDGRID'] }
   config.action_mailer.smtp_settings = {
     :address   => "smtp.sendgrid.net",
     :port      => 587, # ports 587 and 2525 are also supported with STARTTLS
