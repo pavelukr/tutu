@@ -1,4 +1,6 @@
 require "active_support/core_ext/integer/time"
+require 'sendgrid-ruby'
+include SendGrid
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -66,7 +68,7 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: "serene-spire-83709.herokuapp.com"}
   config.action_mailer.delivery_method = :sendgrid
-  config.action_mailer.sendmail_settings = { api_token: ENV['SENDGRID_API_TOKEN'] }
+  config.action_mailer.sendmail_settings = { api_token: ENV['TUTU_SENDGRID'] }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
