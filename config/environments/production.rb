@@ -26,7 +26,7 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
-  #config.action_mailer.default_url_options = { host: "serene-spire-83709.herokuapp.com"}
+  config.action_mailer.default_url_options = { host: "serene-spire-83709.herokuapp.com"}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :address   => "smtp.sendgrid.net",
@@ -35,7 +35,7 @@ Rails.application.configure do
     :user_name => ENV["SENDGRID_USERNAME"],
     :password  => ENV["SENDGRID_PASSWORD"], # SMTP password is any valid API key, when user_name is "apikey".
     :authentication => 'plain',
-    :domain => 'serene-spire-83709.herokuapp.com', # your domain to identify your server when connecting
+    :domain => 'herokuapp.com', # your domain to identify your server when connecting
   }
 
 
