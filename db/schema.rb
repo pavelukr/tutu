@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_02_24_161816) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "railway_carriages", force: :cascade do |t|
     t.integer "number"
     t.integer "top_seats"
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_161816) do
     t.string "type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "train_id"
+    t.bigint "train_id"
     t.index ["id", "type"], name: "index_railway_carriages_on_id_and_type"
     t.index ["number"], name: "index_railway_carriages_on_number"
     t.index ["train_id"], name: "index_railway_carriages_on_train_id"
@@ -36,13 +39,12 @@ ActiveRecord::Schema.define(version: 2021_02_24_161816) do
   end
 
   create_table "railway_stations_routes", force: :cascade do |t|
-    t.integer "railway_station_id"
-    t.integer "route_id"
+    t.bigint "railway_station_id"
+    t.bigint "route_id"
     t.integer "position"
     t.time "arrival_time"
     t.time "departure_time"
     t.index ["position"], name: "index_railway_stations_routes_on_position"
-    t.index ["railway_station_id", "position"], name: "index_railway_stations_routes_on_railway_station_id_and_position"
     t.index ["railway_station_id"], name: "index_railway_stations_routes_on_railway_station_id"
     t.index ["route_id"], name: "index_railway_stations_routes_on_route_id"
   end
@@ -57,10 +59,10 @@ ActiveRecord::Schema.define(version: 2021_02_24_161816) do
   create_table "tickets", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "train_id"
+    t.bigint "train_id"
     t.integer "begin_station_id"
     t.integer "end_station_id"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.text "first_name"
     t.text "last_name"
     t.text "middle_name"
@@ -80,7 +82,7 @@ ActiveRecord::Schema.define(version: 2021_02_24_161816) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "current_station_id"
-    t.integer "route_id"
+    t.bigint "route_id"
     t.index ["current_station_id"], name: "index_trains_on_current_station_id"
     t.index ["number"], name: "index_trains_on_number"
     t.index ["route_id"], name: "index_trains_on_route_id"
