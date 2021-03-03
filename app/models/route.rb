@@ -3,8 +3,6 @@ class Route < ApplicationRecord
 
   validate :stations_count
 
-  before_create :set_name
-
   has_many :trains
 
   has_many :railway_stations_routes
@@ -18,10 +16,6 @@ class Route < ApplicationRecord
   end
 
   private
-
-  def set_name
-    self.name = "#{railway_stations.first.title} - #{railway_stations.last.title}"
-  end
 
   def stations_count
     if railway_stations.size < 2
