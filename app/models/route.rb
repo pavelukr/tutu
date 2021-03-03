@@ -3,7 +3,7 @@ class Route < ApplicationRecord
 
   validate :stations_count
 
-  before_validation :set_name
+  before_create :set_name
 
   has_many :trains
 
