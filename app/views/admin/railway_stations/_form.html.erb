@@ -1,5 +1,5 @@
 <%= form_for [:admin, station] do |form| %>
-  <% if railway_station.errors.any? %>
+  <% if station.errors.any? %>
     <div id="error_explanation">
       <h2><%= t('admin.railway_stations.errors') %></h2>
 
