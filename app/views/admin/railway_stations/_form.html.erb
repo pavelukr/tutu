@@ -1,10 +1,10 @@
-<%= form_with(model: [:admin, railway_station]) do |form| %>
+<%= form_for [:admin, station] do |form| %>
   <% if railway_station.errors.any? %>
     <div id="error_explanation">
       <h2><%= t('admin.railway_stations.errors') %></h2>
 
       <ul>
-        <% railway_station.errors.each do |error| %>
+        <% station.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -17,6 +17,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit t('.submit', action: @railway_station.new_record? ? 'Create' : 'Edit')%>
+    <%= form.submit t('.submit', action: station.new_record? ? 'Create' : 'Edit')%>
   </div>
 <% end %>
