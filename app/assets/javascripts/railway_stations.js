@@ -7,7 +7,7 @@ $(document).ready(function () {
         let title = $('#railway_station_title_' + station_id);
 
         if (!$(this).hasClass('cancel')) {
-            $(this).html('Cancel');
+            $(this).html('Cancel')
             $(this).addClass('cancel');
         } else {
             $(this).html('Edit');
