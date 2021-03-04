@@ -1,0 +1,4 @@
+<p> Hi, <%= @user.first_name %></p>
+<p> You bought ticket on the route: <%= "#{ @ticket.begin_station.title } - #{ @ticket.end_station.title }" %></p>
+<p> Watch ticket you can <%= link_to 'here', [:admin, @ticket] %></p>
+<p> All your tickets you can see <%= link_to 'here',  admin_train_tickets_url(Train.all) %></p>
