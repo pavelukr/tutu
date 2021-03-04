@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  num_of_top_seats: 1
+  num_of_bottom_seats: 1
+
+two:
+  type: 
+  num_of_top_seats: 1
+  num_of_bottom_seats: 1

@@ -1,0 +1,46 @@
+<p>
+  <strong>Number:</strong>
+  <%= @train.number %>
+</p>
+
+<p>
+  <% if @train.railway_carriages.present? %>
+    <strong>This train has these carriages (sorted from </strong>
+    <% if @train.order_carriage %>
+      <strong> head)</strong>
+    <% else %>
+      <strong> tail)</strong>
+    <% end %>
+    <% @train.railway_carriages.each do |railway_carriage| %>
+      <ul>
+        <li><%= link_to "Carriage №#{railway_carriage.number}", admin_railway_carriage_path(railway_carriage) %></li>
+      </ul>
+    <% end %>
+  <% else %>
+    <strong>This train doesn't have any carriages.</strong>
+  <% end %>
+  </p>
+
+  <p>
+    <strong>On the station: </strong>
+    <% if @train.current_station.present? %>
+      <%= @train.current_station.title %>
+    <% else %>
+      Current station is not specified.
+    <% end %>
+  </p>
+
+  <strong>On the route: </strong>
+  <% if @train.route.present? %>
+    <%= @train.route.name %>
+  <% else %>
+    These train doesn't have a route.
+  <% end %>
+  </p>
+
+  <p>
+    <%= link_to "Add carriage", new_admin_train_railway_carriage_path(@train) %>
+  </p>
+
+  <%= link_to 'Edit', edit_admin_train_path(@train) %> |
+  <%= link_to 'Back', admin_trains_path %>

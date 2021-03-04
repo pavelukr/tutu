@@ -1,0 +1,23 @@
+<% hidden = false unless local_assigns[:hidden] %>
+<%= form_for [:admin, station], html: { style: "display: #{hidden ? 'none' : 'block'}" } do |form| %>
+  <% if station.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= t('admin.railway_stations.errors') %></h2>
+
+      <ul>
+        <% station.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit t('.submit', action: station.new_record? ? 'Create' : 'Edit')%>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+ru:
+  common:
+    back: "Назад"
+    show: "Показать"
+    edit: "Редактировать"
+  admin:
+    railway_stations:
+      railway_station:
+        show: "Показать"
+        edit: "Редактировать"
+        destroy: "Удалить"
+      new:
+        title_page: "Новая станция"
+      edit:
+        title_page: "Редактирование станции"
+      show:
+        title: "Название станции"
+      index:
+        title_page: "Железнодорожные станции"
+        title: "Название станции"
+        new_station: "Создать новую станцию"
+      form:
+        submit: '%{action} станцию'
+      errors: "При заполнение формы возникли ошибки"
+    railway_carriages:
+      errors: "При заполнение формы возникли ошибки"
+    tickets:
+      errors: "При заполнение формы возникли ошибки"
+    routes:
+      errors: "При заполнение формы возникли ошибки"
+    trains:
+      errors: "При заполнение формы возникли ошибки"
